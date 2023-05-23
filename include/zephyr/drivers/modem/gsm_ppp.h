@@ -54,6 +54,14 @@ void gsm_ppp_register_modem_power_callback(const struct device *dev,
 					   void *user_data);
 
 /**
+ * @brief Custom PING AT command by vnydv21
+ *
+ * @param dev: gsm modem device
+ * @param cmd: specied url or ip to ping
+ */
+void gsm_ppp_ping_ip(const struct device *dev, const char *cmd);
+
+/**
  * @brief Get GSM modem information.
  *
  * @param dev: GSM modem device.
