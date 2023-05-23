@@ -1372,3 +1372,14 @@ static int gsm_init(const struct device *dev)
 
 DEVICE_DT_DEFINE(DT_DRV_INST(0), gsm_init, NULL, &gsm, NULL,
 		 POST_KERNEL, CONFIG_MODEM_GSM_INIT_PRIORITY, NULL);
+
+
+static 
+
+/**
+ * @breif
+ */
+void gsm_ppp_ping_ip(const struct device *dev, const char *cmd)
+{
+
+}
