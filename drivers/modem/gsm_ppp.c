@@ -1374,12 +1374,21 @@ DEVICE_DT_DEFINE(DT_DRV_INST(0), gsm_init, NULL, &gsm, NULL,
 		 POST_KERNEL, CONFIG_MODEM_GSM_INIT_PRIORITY, NULL);
 
 
-static 
-
-/**
- * @breif
- */
-void gsm_ppp_ping_ip(const struct device *dev, const char *cmd)
+void gsm_ppp_ping_ip(const struct device *dev, const char *ipaddress)
 {
+	// first print the IP as error
+	int ret;
+	struct gsm_modem *gsm = dev->data;
 
+	gsm_ppp_lock(gsm);
+
+	if (gsm->state == GSM_PPP_STOP) {
+		LOG_ERR("gsm_ppp is not started, please start it first!");
+		goto unlock;
+	}
+
+	LOG_ERR("PING function OK, got address %s", ipaddress);
+
+unlock: 
+	gsm_ppp_unlock(gsm);
 }
